@@ -1,0 +1,10 @@
+#simple TCP socket server & client in C - StŽphane adam garnier 2012
+
+#> to compile the server : ' cc tcp_server.c -o tcp_server.out '
+#> to run the server: ' ./tcp_server.out <portNumber>'
+
+#> to compile the client : ' cc tcp_client.c -o tcp_client.out '
+#> to run the client: ' ./tcp_client.out <host(example: 'localhost')> <portNumber>'
+
+#>> in each case, a bunch of warnings may be thrown, but it doesn't matter til we get the '*.out' compiled program
+#>> if anything went wrong, errors will be thrown during the compilation with few hints to debug them ( goog luck ;p )

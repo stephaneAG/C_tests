@@ -1,0 +1,80 @@
+# How to use 42_touch ( and how to build something else with the techniques used )
+
+# simplest
+source_code_file_header_42 "Filename"
+
+# overriding the default user ID
+source_code_file_header_42 "StephaneAG" "Filename"
+
+# overriding the default user ID and the file creation date ( the updated date is calculated automatically )
+source_code_file_header_42 "StephaneAG" "Filename" "2025/03/01 21:30:03"
+
+# - examples -
+
+# simplest:
+
+. source_code_file_header_42 "AFile.c"
+
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   AFile.c                                            :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   by: StephaneAG <StephaneAG@student.42.fr>      +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: 2014/02/02 21:05:28 by StephaneAG        #+#     #+#             */
+/*   Updated: 2014/02/02 21:05:29 by StephaneAG        ###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+
+
+# overriding the default user ID:
+
+. source_code_file_header_42 "LittleBro" "My Awesome Project - main.cpp"
+
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   My Awesome Project - main.cpp                      :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   by: LittleBro <LittleBro@student.42.fr>        +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: 2014/02/02 21:09:22 by LittleBro         #+#     #+#             */
+/*   Updated: 2014/02/02 21:09:22 by LittleBro         ###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+
+# overriding the default user ID and the fiel creation date ( the updated date is calculated automatically):
+
+. source_code_file_header_42 "Billy" "southpark_ascii_art.sh" "2025/03/01 21:30:03"
+
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   southpark_ascii_art.sh                             :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   by: Billy <Billy@student.42.fr>                +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: 2025/03/01 21:30:03 by Billy             #+#     #+#             */
+/*   Updated: 2014/02/02 21:12:44 by Billy             ###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+
+# - Note -
+
+# For any of the examples, if the text has spaces in it, it must be enclosed with parenthesis. Else, we can ommit them fine, event for the date thing:
+
+. source_code_file_header_42 Billy southpark_ascii_art.sh 2025/03/01 21:30:03
+
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   southpark_ascii_art.sh                             :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   by: Billy <Billy@student.42.fr>                +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: 2025/03/01 21:30:03 by Billy             #+#     #+#             */
+/*   Updated: 2014/02/02 21:12:44 by Billy             ###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+

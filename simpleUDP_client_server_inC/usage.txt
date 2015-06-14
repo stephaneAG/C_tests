@@ -1,0 +1,10 @@
+simple UDP socket server & client in C - StŽphane adam garnier 2012
+
+> to compile the server : ' cc udp_server.c -o udp_server.out '
+> to run the server: ' ./udp_server.out <portNumber>'
+
+> to compile the client : ' cc udp_client.c -o udp_client.out '
+> to run the client: ' ./udp_client.out <host(example: 'localhost')> <portNumber>'
+
+>> in each case, a bunch of warnings may be thrown, but it doesn't matter til we get the '*.out' compiled program
+>> if anything went wrong, errors will be thrown during the compilation with few hints to debug them ( goog luck ;p )

@@ -1,0 +1,33 @@
+login is: 
+login length: 7
+properly formatted login is: . by: Quentin <Quentin@student.42.fr>       .
+properly formatted login length is: 35
+remaining space characters to add is: {41-35}
+filename is: 
+filename length: 6
+properly formatted filename is: . main.c                                    .
+
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   main.c                                             :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   by: Quentin <Quentin@student.42.fr>            +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: 2013/08/28 00:49:35 by login____         #+#     #+#             */
+/*   Updated: 2013/08/28 00:49:35 by login____         ###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   filename_____________________________.ext          :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   by: login____ <login____@student.42.fr>        +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: yyyy/mm/dd hh:mm:ss by login____         #+#     #+#             */
+/*   Updated: yyyy/mm/dd hh:mm:ss by login____         ###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+

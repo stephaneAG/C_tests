@@ -1,0 +1,145 @@
+#!/bin/bash
+
+# check if any var was passed
+# nb: 'ftt' stands for 42 ;p
+
+# look for environment variables
+#if [ ftt_touch__now_date ]; then
+#	ftt_touch__file_creation_date=$ftt_touch__now_date
+#fi
+
+#if [ ftt_touch__update_date ]; then
+#	ftt_touch__file_update_date=$ftt_touch__update_date
+#fi
+
+#if [ ftt_touch__login_name ]; then
+#	ftt_touch__login_name=$ftt_touch__login_name
+#fi
+
+#if [ ftt_touch__filename ]; then
+#	ftt_touch__file_name=$ftt_touch__filename
+#fi
+	
+# look for variables passed directly from a CLI on a terminal
+# complete file creation: login, filename, desired creation date & last update set to current date & time
+if [ $# = 3 ]; then
+	ftt_touch__file_creation_date=$3
+	ftt_touch__file_update_date=`date +"%Y/%m/%d %H:%M:%S"`
+	ftt_touch__login_name=$1
+	ftt_touch__file_name=$2
+	#echo "complete file creation: login, filename, desired creation date & last update set to current date & time"
+fi
+# standard file creation: login & filename
+if [ $# = 2 ]; then
+	ftt_touch__file_creation_date=`date +"%Y/%m/%d %H:%M:%S"`
+	#echo "filename is: $1"
+	ftt_touch__file_update_date=`date +"%Y/%m/%d %H:%M:%S"`
+	ftt_touch__login_name=$1
+	ftt_touch__file_name=$2
+	#echo "standard file creation: login & filename"
+fi
+# fast file creation: based on last login used ( global variable / need at list one execution )
+if [ $# = 1 ]; then
+	ftt_touch__file_creation_date=`date +"%Y/%m/%d %H:%M:%S"`
+	ftt_touch__file_update_date=`date +"%Y/%m/%d %H:%M:%S"`
+	ftt_touch__login_name=$ftt_touch__login_name
+	ftt_touch__file_name=$1
+fi
+	
+# here, we take care of pre-formatting the values got from the params and mix it with a line of the ascii art header
+
+# R: to get the date & time from the terminal: just type ''date
+# > Mar 27 aož 2013 21:35:56 CEST ( 30 chars, -5 chars pr le 'CEST')
+# R: or even better , to get the formatting of our choice: typing 'date +"%d/%m/%Y_%H:%M:%S:%N"'
+# > 27/08/2013_23:37:02:N
+# So, for our current needs: 'date +"%Y/%m/%d %H:%M:%S"'
+# > 2013/08/27 23:39:39
+
+# filename_____________________________.ext
+# 41 chars --> the maximum here, so we can take this as base to construct the other strings (..)
+
+# handle the filename
+fft_touch___file_name_ARG=`echo "$ftt_touch__file_name"`
+#fft_touch___FILENAME_ARG="$ftt_touch__file_name"
+fft_touch___FILENAME_ARG_LENGTH=`echo "$fft_touch___file_name_ARG" | awk '{print length}'`
+fft_touch___CHARS_SPACE_ALLOWED=41
+fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK=$fft_touch___CHARS_SPACE_ALLOWED-$fft_touch___FILENAME_ARG_LENGTH
+#fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK=`expr $fft_touch___CHARS_SPACE_ALLOWED - $fft_touch___FILENAME_ARG_LENGTH`
+fft_touch___FORMATTED_FILENAME=$fft_touch___file_name_ARG
+# now, we add spaces to the filename string to preserve the ascii artwork following it
+fft_touch___FILENAME_COUNTER=0
+while [[ $fft_touch___FILENAME_COUNTER -lt $fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK ]]
+do
+	fft_touch___FORMATTED_FILENAME+=" "
+	let fft_touch___FILENAME_COUNTER+=1
+done
+
+#echo "filename is: $2"
+#echo "filename length: $fft_touch___FILENAME_ARG_LENGTH"
+#echo "remaining space characters to add is: $fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK"
+#echo "properly formatted filename is: . $fft_touch___FORMATTED_FILENAME ."
+
+# handle the login
+fft_touch___login_name_ARG=`echo "$ftt_touch__login_name"`
+
+fft_touch___FORMATTED_LOGIN="by: $fft_touch___login_name_ARG <$fft_touch___login_name_ARG@student.42.fr>"
+fft_touch___LOGIN_ARG_LENGTH=`echo "$fft_touch___login_name_ARG" | awk '{print length}'`
+fft_touch___FORMATTED_LOGIN_ARG_LENGTH=`echo "$fft_touch___FORMATTED_LOGIN" | awk '{print length}'`
+fft_touch___CHARS_SPACE_ALLOWED=41
+#fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK=$fft_touch___CHARS_SPACE_ALLOWED-$fft_touch___LOGIN_ARG_LENGTH
+#fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK=`expr $fft_touch___CHARS_SPACE_ALLOWED - $fft_touch___FILENAME_ARG_LENGTH`
+fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK=$fft_touch___CHARS_SPACE_ALLOWED-$fft_touch___FORMATTED_LOGIN_ARG_LENGTH
+# now, we add spaces to the filename string to preserve the ascii artwork following it
+fft_touch___LOGIN_COUNTER=0
+while [[ $fft_touch___LOGIN_COUNTER -lt $fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK ]]
+do
+	fft_touch___FORMATTED_LOGIN+=" "
+	let fft_touch___LOGIN_COUNTER+=1
+done
+
+#echo "properly formatted login is: . $fft_touch___FORMATTED_LOGIN ."
+#echo "properly formatted login length is: $fft_touch___FORMATTED_LOGIN_ARG_LENGTH"
+#echo "remaining space characters to add is: {$fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK}"
+
+# again, finish handling the login name present after the date & time displayed
+fft_touch___CHARS_SPACE_ALLOWED=18
+fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK=$fft_touch___CHARS_SPACE_ALLOWED-$fft_touch___LOGIN_ARG_LENGTH
+# now, we add spaces to the filename string to preserve the ascii artwork following it
+fft_touch___LOGIN_COUNTER=0
+while [[ $fft_touch___LOGIN_COUNTER -lt $fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK ]]
+do
+	fft_touch___login_name_ARG+=" "
+	let fft_touch___LOGIN_COUNTER+=1                        
+done
+
+#echo "login is: $1"
+#echo "login length: $fft_touch___LOGIN_ARG_LENGTH"
+#echo "remaining space characters to add is: {$fft_touch___REMAINING_CHARS_BEFORE_ASCII_ARTWORK}"
+
+echo -e '
+/*******************************************************************************/
+/*                                                                             */
+/*                                                       :::       ::::::::    */
+/*   '"$fft_touch___FORMATTED_FILENAME"'          :+:       :+:   :+:    */
+/*                                                    +:+ +:+          +:+     */
+/*   '"$fft_touch___FORMATTED_LOGIN"'      +#+  +:+        +#+        */
+/*                                                +#+#+#+#+#+    +#+           */
+/*   Created: '"$ftt_touch__file_creation_date"' by '"$fft_touch___login_name_ARG"'#+#     #+#             */
+/*   Updated: '"$ftt_touch__file_update_date"' by '"$fft_touch___login_name_ARG"'###   ########.fr       */
+/*                                                                             */
+/*******************************************************************************/
+'
+
+# patron 42
+
+#/*******************************************************************************/
+#/*                                                                             */
+#/*                                                       :::       ::::::::    */
+#/*   filename_____________________________.ext          :+:       :+:   :+:    */
+#/*                                                    +:+ +:+          +:+     */
+#/*   by: login____ <login____@student.42.fr>        +#+  +:+        +#+        */
+#/*                                                +#+#+#+#+#+    +#+           */
+#/*   Created: yyyy/mm/dd hh:mm:ss by login____         #+#     #+#             */
+#/*   Updated: yyyy/mm/dd hh:mm:ss by login____         ###   ########.fr       */
+#/*                                                                             */
+#/*******************************************************************************/
